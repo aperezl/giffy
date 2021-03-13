@@ -1,19 +1,9 @@
-import { useState } from 'react'
+import ListOfGifs from './components/ListOfGifs'
 
-const GIFS = [
-  'gif1',
-  'gif2',
-]
-function App() {
-
-  const [gifs, setGifs] = useState(GIFS)
+export default function App() {
   return (
     <div className="App">
-       {
-         gifs.map(gif => <p>{gif}</p>)
-       }
+       <ListOfGifs keyword="bananna" />
     </div>
   );
 }
-
-export default App;
