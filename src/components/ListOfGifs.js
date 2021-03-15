@@ -4,12 +4,20 @@ import Gif from './Gif'
 
 const ListOfGifs = ({ params }) => {
 
+  const [loading, setLoading] = useState(false)
+
   const { keyword } = params
   const [gifs, setGifs] = useState([])
 
   useEffect(() => {
-    getGifs({ keyword }).then(gifs => setGifs(gifs))      
+    setLoading(true)
+    getGifs({ keyword }).then(gifs => {
+      setGifs(gifs)
+      setLoading(false)
+    })
   }, [keyword])
+
+  if (loading) return <i>Loading...</i>
 
   return <> {
     gifs.map(({ id, title, url }) => 
