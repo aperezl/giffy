@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import getGifs from '../../services/getGifs'
+import Spinner from '../Spinner'
 import Gif from '../Gif'
 
 const ListOfGifs = ({ params }) => {
-
+  
   const [loading, setLoading] = useState(false)
 
   const { keyword } = params
@@ -17,7 +18,7 @@ const ListOfGifs = ({ params }) => {
     })
   }, [keyword])
 
-  if (loading) return <i>Loading...</i>
+  if (loading) return <Spinner />
 
   return <> {
     gifs.map(({ id, title, url }) => 
