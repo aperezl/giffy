@@ -4,9 +4,10 @@ import { Heading, Input } from "@chakra-ui/react"
 import { useLocation } from 'wouter'
 
 const Home = () => {
-  const [keyword, setKeyword] = useState('xx')
+  const [keyword, setKeyword] = useState('')
 
-  const [_, pushLocation] = useLocation()
+  const [path, pushLocation] = useLocation()
+  console.log(path)
 
   const handlerSubmit = e => {
     e.preventDefault()
