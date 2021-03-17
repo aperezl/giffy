@@ -7,7 +7,7 @@ import ListOfGifs from '../../components/ListOfGifs'
 
 const Home = () => {
   const [keyword, setKeyword] = useState('')
-  const [path, pushLocation] = useLocation()
+  const [, pushLocation] = useLocation()
   const { loading, gifs } = useGifs()
   
 
