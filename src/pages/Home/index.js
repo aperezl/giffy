@@ -1,13 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
-import { Heading, Input } from "@chakra-ui/react"
+import { Heading, Input, Spinner } from "@chakra-ui/react"
 import { useLocation } from 'wouter'
+import { useGifs } from '../../hooks/useGifs'
+import ListOfGifs from '../../components/ListOfGifs'
 
 const Home = () => {
   const [keyword, setKeyword] = useState('')
-
   const [path, pushLocation] = useLocation()
-  console.log(path)
+  const { loading, gifs } = useGifs()
+  
 
   const handlerSubmit = e => {
     e.preventDefault()
@@ -24,6 +26,10 @@ const Home = () => {
       <form onSubmit={handlerSubmit}>
         <Input onChange={handlerInput} placeholder="Keyword" type="text" value={keyword} />
       </form>
+      { loading
+        ? <Spinner />
+        : <ListOfGifs gifs={gifs} />
+      }
     </div>
   )
 }
